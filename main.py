@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# @app.route('/')  # this is the home page route
-# def hello_world(
-# ):  # this is the home page function that generates the page code
-#     return "Hello world!"
+@app.route("/")  # this is the home page route
+def hello_world(
+):  # this is the home page function that generates the page code
+    return "Hello world!"
 
-@app.route('/', methods=['POST'])
+@app.route("/", methods=("GET","POST"))
 async def webhook():
     try:
         req = request.get_json(silent=True, force=True)
